@@ -1,5 +1,6 @@
 const express = require('express')
 const { mongoose } = require('mongoose')
+const cookieParser = require('cookie-parser')
 const cors = require('cors')
 require("dotenv").config()
 
@@ -14,6 +15,7 @@ app.use(credentials);
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 app.use('/images', express.static('upload/images'));
 
 app.use('/user', require('./routes/userRoutes'))

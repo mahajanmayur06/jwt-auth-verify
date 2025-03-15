@@ -16,7 +16,7 @@ const TokenSchema = new mongoose.Schema({
     },
     expires: {
         type : Number,
-        default: 7 * 24 * 60 * 60, // Token expires in 7 days
+        default: 5 * 60
     }
 });
 

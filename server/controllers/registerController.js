@@ -4,15 +4,16 @@ const bcrypt = require('bcrypt')
 const User = require('../models/User')
 
 const registerController = async (req, res) => {
-    const { username, password } = req.body
-
+    const { username, password, role } = req.body
+    
     console.log(username);
     try {
         email = username + "@gmail.com"
         const user = await User.create({
             username,
             email,
-            password: bcrypt.hashSync(password, 10)
+            password: bcrypt.hashSync(password, 10),
+            role : role
         })
 
         console.log(user.username,  user.password);
