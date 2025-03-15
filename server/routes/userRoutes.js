@@ -13,10 +13,12 @@ const registerController = require('../controllers/registerController')
 
 const verifyJWT = require('../middlewares/verifyJWT');
 const verifyRole = require('../middlewares/verifyRoles');  // Role-based access control middleware
+const refreshController = require('../controllers/refreshController');
 
 // Public Routes
 userRouter.post('/register', registerController);
-userRouter.post('/auth', verifyJWT, authController);
+userRouter.post('/auth', authController);
+userRouter.post('/refresh', refreshController);
 
 // Protected Routes (Require Authentication)
 userRouter.get('/users', verifyJWT, verifyRole(['admin']), getAllUsers);
